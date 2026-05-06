@@ -602,7 +602,20 @@ require('lazy').setup({
       local servers = {
         clangd = {},
         gopls = {},
-        pyright = {},
+        -- pyright = {},
+        basedpyright = {
+          -- settings = {
+          --   basedpyright = {
+          --     analysis = {
+          --       typeCheckingMode = "recommended", -- ["off", "basic", "standard", "strict", "recommended", "all"]
+          --       diagnosticMode = "openFilesOnly",
+          --       inlayHints = {
+          --         callArgumentNames = true
+          --       }
+          --     }
+          --   }
+          -- }
+        },
         rust_analyzer = {},
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:

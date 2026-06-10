@@ -671,6 +671,10 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         -- You can add other tools here that you want Mason to install
+        -- Ensure linters are installed (see plugins/lint.lua)
+        'markdownlint',
+        'ruff',
+        'eslint_d',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -974,7 +978,7 @@ require('lazy').setup({
   --
   -- require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
+  require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs', -- this shit auto-closes characters like ( " { etc.
   -- require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommended keymaps

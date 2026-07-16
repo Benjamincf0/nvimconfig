@@ -124,6 +124,17 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 
+-- 2 spaces for web dev files
+-- Overrides language defaults in:
+-- /opt/homebrew/Cellar/neovim/.../ftplugin
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'javascript', 'typescript', 'json', 'html', 'css', 'typescriptreact', 'javascriptreact' },
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+  end,
+})
+
 -- Enable undo/redo changes even after closing and reopening a file
 vim.o.undofile = true
 

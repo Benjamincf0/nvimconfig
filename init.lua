@@ -765,6 +765,8 @@ do
 
     stylua = {}, -- Used to format Lua code
 
+    ocamllsp = {},
+
     -- Special Lua Config, as recommended by neovim help docs
     lua_ls = {
       on_init = function(client)
@@ -829,6 +831,7 @@ do
     'markdownlint',
     'ruff',
     'eslint_d',
+    'ocamlformat'
   })
 
   require('mason-tool-installer').setup { ensure_installed = ensure_installed }

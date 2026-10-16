@@ -756,6 +756,7 @@ do
     gopls = {},
     pyright = {},
     tsc = {},
+    terraformls = {},
     --
     -- Some languages (like rust) have entire language plugins that can be useful:
     --    https://github.com/mrcjkb/rustaceanvim
@@ -869,6 +870,9 @@ do
     -- You can also specify external formatters in here.
     formatters_by_ft = {
       rust = { 'rustfmt' },
+      tf = { 'terraform_fmt' },
+      terraform = { 'terraform_fmt' },
+      ['terraform-vars'] = { 'terraform_fmt' },
       -- Conform can also run multiple formatters sequentially
       python = { 'ruff_organize_imports', 'ruff_fix', 'ruff_format' },
       --
@@ -987,8 +991,10 @@ do
   vim.pack.add { { src = gh 'nvim-treesitter/nvim-treesitter', version = 'main' } }
 
   -- Ensure basic parsers are installed
-  local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+  local parsers = { 'bash', 'c', 'diff', 'hcl', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
   require('nvim-treesitter').install(parsers)
+
+  vim.treesitter.language.register('hcl', { 'hcl', 'tf', 'terraform', 'terraform-vars' })
 
   ---@param buf integer
   ---@param language string

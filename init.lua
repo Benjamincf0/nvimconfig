@@ -752,7 +752,9 @@ do
   --  See `:help lsp-config` for information about keys and how to configure
   ---@type table<string, vim.lsp.Config>
   local servers = {
-    clangd = {},
+    clangd = {
+      cmd = { 'clangd', '--clang-tidy' },
+    },
     gopls = {},
     pyright = {},
     tsc = {},
@@ -832,6 +834,7 @@ do
     'markdownlint',
     'ruff',
     'eslint_d',
+    'clang-format',
     'ocamlformat'
   })
 
@@ -869,6 +872,8 @@ do
     },
     -- You can also specify external formatters in here.
     formatters_by_ft = {
+      c = { 'clang-format' },
+      cpp = { 'clang-format' },
       rust = { 'rustfmt' },
       tf = { 'terraform_fmt' },
       terraform = { 'terraform_fmt' },

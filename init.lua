@@ -752,6 +752,8 @@ do
   --  See `:help lsp-config` for information about keys and how to configure
   ---@type table<string, vim.lsp.Config>
   local servers = {
+    -- Configure the ARM target and assembler in each project's .asm-lsp.toml.
+    asm_lsp = {},
     clangd = {
       cmd = { 'clangd', '--clang-tidy' },
     },
@@ -996,7 +998,7 @@ do
   vim.pack.add { { src = gh 'nvim-treesitter/nvim-treesitter', version = 'main' } }
 
   -- Ensure basic parsers are installed
-  local parsers = { 'bash', 'c', 'diff', 'hcl', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+  local parsers = { 'asm', 'bash', 'c', 'diff', 'hcl', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
   require('nvim-treesitter').install(parsers)
 
   vim.treesitter.language.register('hcl', { 'hcl', 'tf', 'terraform', 'terraform-vars' })

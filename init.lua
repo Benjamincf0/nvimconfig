@@ -452,7 +452,12 @@ do
 
   vim.pack.add { gh 'catppuccin/nvim' }
   ---@diagnostic disable-next-line: missing-fields
-  require('catppuccin').setup {}
+  require('catppuccin').setup {
+    custom_highlights = {
+      -- Bright filename text with a transparent statusline background.
+      MiniStatuslineFilename = { fg = '#ffffff', bg = 'NONE' },
+    },
+  }
   vim.cmd.colorscheme 'catppuccin-mocha'
 
   -- Highlight todo, notes, etc in comments

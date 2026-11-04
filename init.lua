@@ -759,7 +759,7 @@ do
     },
     gopls = {},
     pyright = {},
-    tsc = {},
+    ts_ls = {},
     terraformls = {},
     --
     -- Some languages (like rust) have entire language plugins that can be useful:

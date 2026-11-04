@@ -772,6 +772,8 @@ do
 
     ocamllsp = {},
 
+    jdtls = {},
+
     -- Special Lua Config, as recommended by neovim help docs
     lua_ls = {
       on_init = function(client)

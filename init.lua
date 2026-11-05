@@ -771,7 +771,16 @@ do
     },
     gopls = {},
     pyright = {},
-    ts_ls = {},
+    tsc = {
+      -- TypeScript 7+ includes a native language server.
+      cmd = { 'tsc', '--lsp', '--stdio' },
+      filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+      root_markers = {
+        { 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml', 'bun.lockb', 'bun.lock' },
+        '.git',
+        { 'tsconfig.json', 'jsconfig.json', 'package.json' },
+      },
+    },
     terraformls = {},
     --
     -- Some languages (like rust) have entire language plugins that can be useful:
@@ -784,7 +793,10 @@ do
 
     ocamllsp = {},
 
-    jdtls = {},
+    jdtls = {
+      -- JDT LS requires Java 25+ to run.
+      cmd_env = { JAVA_HOME = vim.fn.expand '~/.sdkman/candidates/java/27.0.0-oracle' },
+    },
 
     -- Special Lua Config, as recommended by neovim help docs
     lua_ls = {
